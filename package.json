@@ -1,0 +1,23 @@
+{
+  "name": "1606a-citybook",
+  "version": "1.0.0",
+  "description": "1606A-citybook",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaodanli/1606A-citybook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaodanli/1606A-citybook/issues"
+  },
+  "homepage": "https://github.com/xiaodanli/1606A-citybook#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
