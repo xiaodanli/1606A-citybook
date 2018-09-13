@@ -25,8 +25,6 @@ define(['jquery'], function($) {
                 }
             })
         })
-
-
     }
 
     return get

@@ -9,6 +9,12 @@ var path = require('path');
 var url = require('url');
 
 var mock = require('./mock');
+
+var sass = require('gulp-sass');
+
+var autoprefixer = require('gulp-autoprefixer');
+
+var concat = require('gulp-concat');
 console.log(mock.toString());
 
 gulp.task('devServer', function() {
@@ -37,7 +43,7 @@ gulp.task('devServer', function() {
                             return resObj[/api/detail]
                         }
                     */
-                    rea.end(JSON.stringify({ code: 1, data: mock(pathname) })) //  /api/index
+                    res.end(JSON.stringify({ code: 1, data: mock(pathname) })) //  /api/index
                 } else {
                     // /index   /detail  /  路由    index.html
 
@@ -48,10 +54,31 @@ gulp.task('devServer', function() {
 
                     // pathname = pathname === '/' ? 'index.html' : pathname;
 
-                    pathname = /\.html|\.css|\.js$/.test(pathname) ? pathname : 'index.html';
+                    pathname = /\.html|\.css|\.js|\.png|\.jpg$/.test(pathname) ? pathname : 'index.html';
 
                     res.end(fs.readFileSync(path.join(__dirname, 'src', pathname)))
                 }
             }
         }))
 })
+
+
+//开发环境css
+
+gulp.task('devCss', function() {
+    return gulp.src('./src/scss/*.scss')
+        .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', 'Android>=4.0']
+        }))
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest('./src/css'))
+})
+
+gulp.task('watch', function() {
+    return gulp.watch('./src/scss/*.scss', gulp.series('devCss'))
+})
+
+//开发环境
+
+gulp.task('dev', gulp.series('devCss', 'devServer', 'watch'))
