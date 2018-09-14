@@ -29,6 +29,10 @@
             margin-left: pxTorem(15px);
             @include bg('../imgs/icon-swicth-list.png');
             background-size: pxTorem(18px);
+            &.change-style{
+                @include bg('../imgs/icon-switch.png');
+                background-size: pxTorem(18px);
+            }
         }
     }
     .swiper-slide {
@@ -64,5 +68,40 @@
         line-height: pxTorem(44px);
         border-bottom: 1px solid $border-color;
         font-weight: bold;
+    }
+    .change-btn {
+        width: 100%;
+        height: pxTorem(44px);
+        background-color: transparent;
+        font-size: pxTorem(16px);
+    }
+    .shelf-list{
+        width:100%;
+        dl{
+            width:100%;
+            display: flex;
+            padding:pxTorem(15px);
+            box-sizing: border-box;
+            dt{
+                width:pxTorem(100px);
+                height: pxTorem(120px);
+                overflow: hidden;
+                img{
+                    width:100%;
+                    height: 100%;
+                }
+            }
+        }
+        &.change-style{
+            display: flex;
+            flex-wrap: wrap;
+            dl{
+                width:33.3%;
+                flex-direction: column;
+                .author,.already,.new{
+                    display: none;
+                }
+            }
+        }
     }
 }

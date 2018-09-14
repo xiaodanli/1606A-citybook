@@ -43,7 +43,7 @@ gulp.task('devServer', function() {
                             return resObj[/api/detail]
                         }
                     */
-                    res.end(JSON.stringify({ code: 1, data: mock(pathname) })) //  /api/index
+                    res.end(JSON.stringify({ code: 1, data: mock(req.url) })) //  /api/index
                 } else {
                     // /index   /detail  /  路由    index.html
 

@@ -7,6 +7,7 @@ require.config({
         'swiper': './libs/swiper.min',
         'handlebars': './libs/handlebars-v4.0.11',
         'text': './libs/text',
+        'bscroll':'./libs/bscroll',
 
         //路由
         'router': './router/router',
@@ -15,12 +16,17 @@ require.config({
         //common
         'get': './common/get',
         'render': './common/render',
+        'format': './common/format',
 
         'index': './view/index',
         'detail': './view/detail',
+        'search':'./view/search',
+        'chapter':'./view/chapter',
 
         //html 模板
-        'listTB': '../view/tpl/list-t-b.html'
+        'listTB': '../view/tpl/list-t-b.html',
+        'listLR': '../view/tpl/list-l-r.html',
+        'labelTpl':'../view/tpl/label.html'
     }
 })
 

@@ -1,6 +1,6 @@
 define(['jquery'], function($) {
     var cache = {};
-    var get = function(url) {
+    var get = function(url, data) {
 
         //Promise   es6  承诺 ，允诺   构造函数
 
@@ -15,6 +15,7 @@ define(['jquery'], function($) {
             $.ajax({
                 url: url,
                 dataType: 'text',
+                data: data || null,
                 success: function(res) { // /view/index.html
                     console.log(res);
                     cache[url] = res;

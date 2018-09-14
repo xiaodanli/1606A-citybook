@@ -4,7 +4,9 @@ require(['page', 'config'], function(page, config) {
     //   /index
     page('/', '/index');
     page('/index', config.index);
-    page('/detail', config.detail);
+    page('/detail/:fiction_id', config.detail);
+    page('/search',config.search);
+    page('/chapter/:fiction_id',config.chapter);
 
     page('*', config.script);
 

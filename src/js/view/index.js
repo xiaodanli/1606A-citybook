@@ -1,6 +1,6 @@
-define(['jquery', 'swiper', 'get', 'render', 'text!listTB'], function($, swiper, get, render, listTB) {
-    console.log(listTB);
+define(['jquery', 'swiper', 'get', 'render', 'text!listTB', 'format', 'text!listLR'], function($, swiper, get, render, listTB, format, listLR) {
     $('body').append(listTB);
+    $('body').append(listLR);
 
     function tabFun(index) {
         $('.tab-item').eq(index).addClass('active').siblings()
@@ -46,72 +46,35 @@ define(['jquery', 'swiper', 'get', 'render', 'text!listTB'], function($, swiper,
         var num = 5;
         var formatArr = format(recommendData, num);
 
-        render()
+        var i = 0;
 
-        function format(data, num) {
-            var target = [];
-            var len = Math.ceil(data.length / num);
+        render("#recommend-tpl", formatArr[0], ".recommend-list");
 
-            for (var i = 0; i < len; i++) {
-                target.push(data.splice(0, num));
+        //点击换一换
+        $('.change-btn').on('click', function() {
+            if (i < (formatArr.length - 1)) {
+                i++;
+            } else {
+                i = 0;
             }
+            render("#recommend-tpl", formatArr[i], ".recommend-list");
 
-            return target
-
-        }
-
-
-        // 
-
-        // [{
-        //         title: "1"
-        //     },
-        //     {
-        //         title: "1"
-        //     },
-        //     {
-        //         title: "1"
-        //     }
-        // ]
-
-        // format(2)  []
-
-        // format(3)  []
-
-        // []
-
-        // [
-        //     [
-        //         {},
-        //         {},
-        //      {},
-        // {}
-
-        //     ],
-        //     [
-        //         {},
-        //         {}
-        //     ]
-        // ]
-
-
-        // <ul>
-        //     {{#each this}}
-        //     <li>
-        //         {{#each this}}
-        //         <dl>
-        //             <dt></dt>
-        //             <dd></dd>
-        //         </dl>
-        //         {{/each}}
-
-        //     </li>
-        //     {{/each}}
-
-        // </ul>
-
-
+        })
     }
+    
+    //点击switch-btn
+    $('.switch-btn').on('click',function(){
+        $(this).toggleClass('change-style');
+
+        $('.shelf-list').toggleClass('change-style');
+    })
+
+    //go search
+
+    $('.not-input').on('click',function(){
+        location.href="/search";
+    })
+
     //初始化
     var init = function(data) {
         //wrap swiper
@@ -123,7 +86,7 @@ define(['jquery', 'swiper', 'get', 'render', 'text!listTB'], function($, swiper,
         });
 
         //请求数据
-        get(data.api).then(function(res) {
+        get(data.api[0]).then(function(res) {
             console.log(JSON.parse(res));
             var data = JSON.parse(res);
             if (data.code === 1) {
@@ -132,6 +95,29 @@ define(['jquery', 'swiper', 'get', 'render', 'text!listTB'], function($, swiper,
         }).catch(function(error) {
             console.warn(error);
         })
+
+
+        var pagenum = 1,
+            limit = 10,
+            total = 0;
+
+        //loadmore数据
+        getLoadmore(pagenum);
+
+        function getLoadmore(pagenum) {
+            var url = data.api[1] + '?pagenum=' + pagenum + '&limit=' + limit;
+            get(url).then(function(res) {
+                var loadmoreData = JSON.parse(res);
+                console.log(res);
+                if (loadmoreData.code === 1) {
+                    total = loadmoreData.data.total;
+                    render("#l-r-tpl", loadmoreData.data.target, ".loadmore", true);
+                    $('.bookcity').on('scroll', loadmoreFun);
+                }
+            }).catch(function(error) {
+                console.warn(error)
+            })
+        }
 
 
 
@@ -147,15 +133,20 @@ define(['jquery', 'swiper', 'get', 'render', 'text!listTB'], function($, swiper,
         //盒子的高度
 
         var conHeight = $('.bookcity').height();
-        $('.bookcity').on('scroll', function() {
+
+        function loadmoreFun() {
             var ulHeight = $('.inner-con').height();
 
             var maxHeight = ulHeight - conHeight;
             // console.log($(this).scrollTop());
             if ($(this).scrollTop() > maxHeight - 44) {
-                console.log("加载更多")
+                if (pagenum < total) {
+                    pagenum++;
+                    $('.bookcity').off('scroll');
+                    getLoadmore(pagenum);
+                }
             }
-        })
+        }
     }
     return init
 })

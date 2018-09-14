@@ -1,0 +1,26 @@
+@import '_config.scss';
+@import '_mixin.scss';
+.search-con{
+    width:100%;
+    flex:1;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    .result-list{
+        margin:pxTorem(15px);
+        display: none;
+        dl{
+            display: flex;
+            dt{
+                width:pxTorem(100px);
+                height: pxTorem(120px);
+                flex-shrink: 0;
+                overflow: hidden;
+                margin-right:pxTorem(10px);
+                img{
+                    width:100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
