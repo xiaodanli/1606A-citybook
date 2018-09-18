@@ -15,6 +15,10 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 
 var concat = require('gulp-concat');
+
+var querystring = require('querystring');
+
+var userlist = require('./mock/data/userlist.json');
 console.log(mock.toString());
 
 gulp.task('devServer', function() {
@@ -34,9 +38,24 @@ gulp.task('devServer', function() {
 
                 // /api/detail
 
+                if(pathname === '/api/login'){
+                    var arr = [];
+                    req.on('data',function(chunk){
+                        arr.push(chunk);
+                    })
 
-
-                if (/^\/api/.test(pathname)) { //
+                    req.on('end',function(){
+                        var params = querystring.parse(Buffer.concat(arr).toString());
+                        var isHas = userlist.some(function(item){
+                            return item.username == params.username && item.pwd == params.pwd
+                        })
+                        if(isHas){
+                            res.end(JSON.stringify({code:1,msg:'登录成功'}))
+                        }else{
+                            res.end(JSON.stringify({code:0,msg:'登录失败'}))
+                        }
+                    })
+                }else if (/^\/api/.test(pathname)) { //
 
                     /*
                     function(url) { // /api/detail

@@ -147,6 +147,17 @@ define(['jquery', 'swiper', 'get', 'render', 'text!listTB', 'format', 'text!list
                 }
             }
         }
+
+        //点击person
+
+        $('.icon-person').on('click',function(){
+            var code = window.localStorage.getItem('code') || 0;
+            if(code){
+                location.href="/my";
+            }else{
+                location.href="/login"
+            }
+        })
     }
     return init
 })

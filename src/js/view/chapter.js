@@ -9,7 +9,8 @@ define(['jquery','render','get','bscroll'],function($,render,get,bscroll){
             if(chapterData.code === 1){
                 render('#chapter-tpl',chapterData.data.item.toc,'.chapter-list');
                 chapter.refresh();
-                var index = chapterData.data.item.toc.length - 1;
+                
+                var index = data.chapter_id != "null" ? data.chapter_id : chapterData.data.item.toc.length - 1;
                 chapter.scrollToElement($('.chapter-list li').eq(index)[0]);
             }
         }).catch(function(error){
@@ -17,7 +18,14 @@ define(['jquery','render','get','bscroll'],function($,render,get,bscroll){
         })    
 
         $('.icon-back').on('click',function(){
-            location.href="/detail/"+data.fiction_id;
+            history.go(-1);
+        })
+
+        //点击chapter-list li
+        $('.chapter-list').on('click','li',function(){
+            var chapter_id = $(this).attr('data-id');
+            window.localStorage.setItem(data.fiction_id,chapter_id);
+            location.href="/artical/"+data.fiction_id+'/'+chapter_id;
         })
     }
     return init

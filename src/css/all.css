@@ -33,6 +33,217 @@
 html {
   font-size: 37.5px; }
 
+.artical-con {
+  width: 100%;
+  height: 100%;
+  padding: 0.4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f7eee5;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch; }
+  .artical-con h3 {
+    font-size: 0.64rem;
+    font-weight: bold;
+    line-height: 2;
+    border-bottom: 1px solid #736357;
+    color: #736357; }
+  .artical-con p {
+    font-size: 0.37333rem;
+    line-height: 1.5;
+    color: #4e534f;
+    text-indent: 2em;
+    margin-top: 0.26667rem; }
+
+.model {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .model .inner-model {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .model .inner-model .model-t {
+      width: 100%;
+      height: 1.17333rem;
+      line-height: 1.17333rem;
+      background-color: rgba(0, 0, 0, 0.8); }
+      .model .inner-model .model-t span {
+        color: #fff;
+        font-size: 0.37333rem;
+        padding-left: 1.17333rem;
+        display: block;
+        background: url("../imgs/icon-circle-back.png") no-repeat 0.4rem center;
+        background-size: 0.53333rem; }
+    .model .inner-model .model-c {
+      width: 100%;
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      background-color: transparent; }
+    .model .inner-model .model-b {
+      background-color: rgba(0, 0, 0, 0.8); }
+      .model .inner-model .model-b .set-chapter {
+        width: 100%;
+        height: 1.17333rem;
+        line-height: 1.17333rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        border-bottom: 1px solid #fff;
+        color: #fff; }
+      .model .inner-model .model-b .set-panel {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+        padding-bottom: 0.4rem; }
+        .model .inner-model .model-b .set-panel dl dt {
+          width: 1.17333rem;
+          height: 1.17333rem;
+          background: url("../imgs/icon-chapter.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl.open-style dt {
+          background: url("../imgs/icon-font.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl.open-style.active dt {
+          background: url("../imgs/icon-font-active.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl.icon-night dt {
+          background: url("../imgs/icon-night.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl.icon-night.light dt {
+          background: url("../imgs/icon-light.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl.icon-download dt {
+          background: url("../imgs/icon-down.png") no-repeat center center;
+          background-size: 0.64rem; }
+        .model .inner-model .model-b .set-panel dl dd {
+          text-align: center;
+          color: #fff; }
+      .model .inner-model .model-b .set-style {
+        width: 100%;
+        padding: 0.4rem;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        position: absolute;
+        bottom: 2rem;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8); }
+        .model .inner-model .model-b .set-style > div {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          color: #fff;
+          margin-bottom: 0.26667rem; }
+          .model .inner-model .model-b .set-style > div span {
+            width: 2.13333rem;
+            text-align: center; }
+          .model .inner-model .model-b .set-style > div .btns {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; }
+            .model .inner-model .model-b .set-style > div .btns button {
+              width: 2.66667rem;
+              height: 0.64rem;
+              border-radius: 0.26667rem;
+              background-color: transparent;
+              border: 1px solide #fff;
+              font-size: 0.37333rem;
+              color: #fff;
+              margin-right: 0.26667rem; }
+          .model .inner-model .model-b .set-style > div .set-bg {
+            -webkit-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; }
+            .model .inner-model .model-b .set-style > div .set-bg li {
+              width: 0.90667rem;
+              height: 0.90667rem;
+              border-radius: 50%;
+              margin-right: 0.26667rem;
+              background-color: #f7eee5;
+              position: relative; }
+              .model .inner-model .model-b .set-style > div .set-bg li.active:before {
+                content: "";
+                width: 1.01333rem;
+                height: 1.01333rem;
+                border-radius: 50%;
+                border: 2px solid red;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate3d(-50%, -50%, 0);
+                        transform: translate3d(-50%, -50%, 0); }
+              .model .inner-model .model-b .set-style > div .set-bg li:nth-child(2) {
+                background-color: #e9dfc7; }
+              .model .inner-model .model-b .set-style > div .set-bg li:nth-child(3) {
+                background-color: #a4a4a4; }
+              .model .inner-model .model-b .set-style > div .set-bg li:nth-child(4) {
+                background-color: #cdefce; }
+              .model .inner-model .model-b .set-style > div .set-bg li:nth-child(5) {
+                background-color: #283548; }
+              .model .inner-model .model-b .set-style > div .set-bg li:nth-child(6) {
+                background-color: #0f1410; }
+
+.none {
+  display: none; }
+
+@charset "UTF-8";
+/*字体大小*/
+/*灰色字体颜色*/
+/*白色字体*/
+/*黑色字体*/
+/*按钮灰色边框*/
+/*蓝色边框颜色*/
+/*蓝色字体颜色*/
+/*group 底部边框颜色*/
+/*header背景*/
+/*搜索框border颜色*/
+/*banner buttle*/
+/*orange line颜色*/
+/*line bottom颜色*/
+/* 书背景*/
+/* 书边框颜色 */
+/*书的阴影*/
+/*绿色标签颜色*/
+/*限免tag背景*/
+/*按钮背景颜色*/
+/*按钮border颜色*/
+/*标签背景*/
+/*标签背景色*/
+/*详情界面*/
+/* 阅读界面 */
+/*阅读界面标题*/
+/*超过几行显示省略号*/
+/*背景*/
+/* 滚动 */
+/*html {
+    font-size: $browser-default-font-size;
+}*/
+html {
+  font-size: 37.5px; }
+
 .chapter-con {
   width: 100%;
   -webkit-box-flex: 1;
@@ -730,6 +941,49 @@ textarea {
               flex-direction: column; }
       .con .shelf-list.change-style dl .author, .con .shelf-list.change-style dl .already, .con .shelf-list.change-style dl .new {
         display: none; }
+
+@charset "UTF-8";
+/*字体大小*/
+/*灰色字体颜色*/
+/*白色字体*/
+/*黑色字体*/
+/*按钮灰色边框*/
+/*蓝色边框颜色*/
+/*蓝色字体颜色*/
+/*group 底部边框颜色*/
+/*header背景*/
+/*搜索框border颜色*/
+/*banner buttle*/
+/*orange line颜色*/
+/*line bottom颜色*/
+/* 书背景*/
+/* 书边框颜色 */
+/*书的阴影*/
+/*绿色标签颜色*/
+/*限免tag背景*/
+/*按钮背景颜色*/
+/*按钮border颜色*/
+/*标签背景*/
+/*标签背景色*/
+/*详情界面*/
+/* 阅读界面 */
+/*阅读界面标题*/
+/*超过几行显示省略号*/
+/*背景*/
+/* 滚动 */
+/*html {
+    font-size: $browser-default-font-size;
+}*/
+html {
+  font-size: 37.5px; }
+
+.form input, .form button {
+  width: 80%;
+  height: 1.17333rem;
+  display: block;
+  margin: 0.26667rem auto;
+  border: 1px solid #ddd;
+  font-size: 0.42667rem; }
 
 @charset "UTF-8";
 /*字体大小*/

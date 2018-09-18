@@ -8,6 +8,7 @@ require.config({
         'handlebars': './libs/handlebars-v4.0.11',
         'text': './libs/text',
         'bscroll':'./libs/bscroll',
+        'base64':'./libs/jquery.base64',
 
         //路由
         'router': './router/router',
@@ -22,6 +23,8 @@ require.config({
         'detail': './view/detail',
         'search':'./view/search',
         'chapter':'./view/chapter',
+        'artical':'./view/artical',
+        'login':'./view/login',
 
         //html 模板
         'listTB': '../view/tpl/list-t-b.html',

@@ -1,0 +1,13 @@
+@import '_config.scss';
+@import '_mixin.scss';
+
+.form{
+    input,button{
+        width:80%;
+        height: pxTorem(44px);
+        display: block;
+        margin:pxTorem(10px) auto;
+        border:1px solid $border-color;
+        font-size:pxTorem($fz16);
+    }
+}

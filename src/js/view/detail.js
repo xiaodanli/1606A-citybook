@@ -13,6 +13,15 @@ define(['jquery','text!labelTpl','get','render','text!listTB'], function($,label
             })
             render("#label-tpl",typeArr,'.type');
             render("#tb-tpl",detailData.data.related,'.other');
+            //点击阅读
+            $('.read-btn').on('click',function(){
+                var code = window.localStorage.getItem('code') || 0;
+                if(code){
+                    location.href="/artical/"+data.fiction_id+'/1';
+                }else{
+                    location.href="/login";
+                }
+            })
         }).catch(function(error){
             console.log(error);
         })

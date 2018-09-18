@@ -23,6 +23,7 @@ define(['jquery', 'get'], function($, get) {
         get('/view/detail.html').then(function(res) {
             _wrap.html(res);
             ctx.data.script = 'detail';
+            ctx.data.fiction_id = ctx.params.fiction_id;
             ctx.data.api = '/api/detail?fiction_id='+ctx.params.fiction_id;
             next();
         }).catch(function(error) {
@@ -48,7 +49,42 @@ define(['jquery', 'get'], function($, get) {
             _wrap.html(res);
             ctx.data.script="chapter";
             ctx.data.fiction_id = ctx.params.fiction_id;
+            ctx.data.chapter_id = ctx.params.chapter_id;
             ctx.data.api='/api/chapter?ficiton_id='+ctx.params.fiction_id;
+            next();
+        }).catch(function(error) {
+            console.warn(error)
+        })
+    }
+
+    config.artical = function(ctx,next){
+        get('/view/artical.html').then(function(res){
+            _wrap.html(res);
+            ctx.data.script = "artical";
+            ctx.data.api = '/api/artical';
+            ctx.data.chapter_list = '/api/chapter?ficiton_id='+ctx.params.fiction_id;
+            ctx.data.fiction_id = ctx.params.fiction_id;
+            ctx.data.chapter_id = ctx.params.chapter_id;
+            next();
+        }).catch(function(error) {
+            console.warn(error)
+        })
+    }
+
+    config.login = function(ctx,next){
+        get('/view/login.html').then(function(res){
+            _wrap.html(res);
+            ctx.data.script = 'login';
+            ctx.data.api = '/api/login';
+            next();
+        }).catch(function(error) {
+            console.warn(error)
+        })
+    }
+
+    config.my = function(ctx,next){
+        get('/view/my.html').then(function(res){
+            _wrap.html(res);
             next();
         }).catch(function(error) {
             console.warn(error)

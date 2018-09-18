@@ -6,7 +6,12 @@ require(['page', 'config'], function(page, config) {
     page('/index', config.index);
     page('/detail/:fiction_id', config.detail);
     page('/search',config.search);
-    page('/chapter/:fiction_id',config.chapter);
+    page('/chapter/:fiction_id/:chapter_id',config.chapter);
+    page('/artical/:fiction_id/:chapter_id',config.artical);
+
+    page('/login',config.login);
+
+    page('/my',config.my);
 
     page('*', config.script);
 
