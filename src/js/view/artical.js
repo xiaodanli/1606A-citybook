@@ -93,6 +93,7 @@ define(['jquery','render','get','base64'],function($,render,get,base64){
             location.href="/login";
         }
 
+
         var fiction_id = data.fiction_id,
             chapter_id = storage.getItem(fiction_id) || data.chapter_id;
 

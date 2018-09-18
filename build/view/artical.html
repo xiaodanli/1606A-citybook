@@ -1,0 +1,80 @@
+<div class="inner-wrap">
+    <div class="artical-con"></div>
+
+    <script type="text/x-handlebars-template" id="artical-tpl">
+        <h3>{{t}}</h3>
+        {{#each p}}
+        <p>{{this}}</p>
+        {{/each}}
+    </script>
+
+    <div class="model none">
+        <div class="inner-model">
+            <div class="model-t">
+                <span class="back">返回</span>
+            </div>
+            <div class="model-c"></div>
+            <div class="model-b">
+                <div class="set-chapter">
+                    <span class="prev-btn">上一章</span>
+                    <span>
+                        <i class="cur">1</i>/
+                        <i class="total">1212</i>
+                    </span>
+                    <span class="next-btn">下一章</span>
+                </div>
+                <div class="set-panel">
+                    <dl class="go-chapter">
+                        <dt></dt>
+                        <dd>目录</dd>
+                    </dl>
+                    <dl class="open-style">
+                        <dt></dt>
+                        <dd>字体</dd>
+                    </dl>
+                    <dl class="icon-night">
+                        <dt></dt>
+                        <dd>夜间</dd>
+                    </dl>
+                    <dl class="icon-download">
+                        <dt></dt>
+                        <dd>下载</dd>
+                    </dl>
+                </div>
+
+                <div class="set-style none">
+                    <div>
+                        <span>字号</span>
+                        <div class="btns">
+                            <button class="big-btn">大</button>
+                            <button class="small-btn">小</button>
+                        </div>
+                    </div>
+                    <div>
+
+                        <!-- 
+                            
+                            $article-bg1:#f7eee5;
+                            $article-bg2:#e9dfc7;
+                            $article-bg3:#a4a4a4;
+                            $article-bg4:#cdefce;
+                            $article-bg5:#283548;
+                            $article-bg6:#0f1410;
+
+
+                         -->
+                        <span>背景</span>
+                        <ul class="set-bg">
+                            <li class="active" data-bg="#f7eee5"></li>
+                            <li data-bg="#e9dfc7"></li>
+                            <li data-bg="#a4a4a4"></li>
+                            <li data-bg="#cdefce"></li>
+                            <li data-bg="#283548"></li>
+                            <li data-bg="#0f1410"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

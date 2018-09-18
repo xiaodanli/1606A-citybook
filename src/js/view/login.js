@@ -1,7 +1,7 @@
 define(['jquery'],function($){
     var init = function(data){
         $('.login-btn').on('click',function(){
-            var username = $('#username').val(),
+            let username = $('#username').val(),
                 pwd = $("#pwd").val();
 
             if(!username || !pwd){

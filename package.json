@@ -4,7 +4,10 @@
   "description": "1606A-citybook",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"gulp dev",
+    "build":"gulp build",
+    "server":"gulp buildServer"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,10 @@
   },
   "homepage": "https://github.com/xiaodanli/1606A-citybook#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-webserver": "^0.9.1"
   }
 }

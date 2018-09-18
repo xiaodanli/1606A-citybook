@@ -16,13 +16,19 @@ var autoprefixer = require('gulp-autoprefixer');
 
 var concat = require('gulp-concat');
 
+var clean = require('gulp-clean-css');
+
 var querystring = require('querystring');
 
 var userlist = require('./mock/data/userlist.json');
+
+var uglify = require('gulp-uglify');
+
+var babel = require('gulp-babel');
 console.log(mock.toString());
 
-gulp.task('devServer', function() {
-    return gulp.src('src')
+function serverFun(pathUrl){
+    return gulp.src(pathUrl)
         .pipe(server({
             port: 9090,
             middleware: function(req, res, next) {
@@ -75,10 +81,14 @@ gulp.task('devServer', function() {
 
                     pathname = /\.html|\.css|\.js|\.png|\.jpg$/.test(pathname) ? pathname : 'index.html';
 
-                    res.end(fs.readFileSync(path.join(__dirname, 'src', pathname)))
+                    res.end(fs.readFileSync(path.join(__dirname, pathUrl, pathname)))
                 }
             }
         }))
+}
+
+gulp.task('devServer', function() {
+    return serverFun('src')
 })
 
 
@@ -101,3 +111,56 @@ gulp.task('watch', function() {
 //开发环境
 
 gulp.task('dev', gulp.series('devCss', 'devServer', 'watch'))
+
+
+//上线环境
+
+//线上打包css
+
+gulp.task('buildCss',function(){
+    return gulp.src('./src/css/all.css')
+    .pipe(clean())
+    .pipe(gulp.dest('build/css'))
+})
+
+gulp.task('copyCss',function(){
+    return gulp.src('./src/css/swiper-3.4.2.min.css')
+    .pipe(gulp.dest('build/css'))
+})
+
+//图片
+gulp.task('copyImg',function(){
+    return gulp.src('./src/imgs/*')
+    .pipe(gulp.dest('build/imgs'))
+})
+
+//js
+
+gulp.task('uglify',function(){
+    return gulp.src('./src/js/{common,view,router}/*.js')
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest('build/js'))
+})
+
+gulp.task('copyJs',function(){
+    return gulp.src(['./src/js/**/*.js','!./src/js/{common,view,router}/*.js'])
+    .pipe(gulp.dest('build/js'))
+})
+
+gulp.task('copyHtml',function(){
+    return gulp.src('./src/**/*.html')
+    .pipe(gulp.dest('build'))
+})
+
+gulp.task('buildServer', function() {
+    return serverFun('build')
+})
+
+gulp.task('build',gulp.series('buildCss','copyCss','copyImg','uglify','copyJs','copyHtml'))
+
+
+
+
